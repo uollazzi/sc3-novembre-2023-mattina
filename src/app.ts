@@ -9,7 +9,6 @@ const logMiddleware = (req: Request, res: Response, next: NextFunction) => {
     console.log("Data:", new Date());
     console.log("URL:", req.method, req.url);
     console.log("User Agent:", req.get('User-Agent'));
-    console.log("Accept Encoding:", req.get('Accept-Encoding'));
     next();
 }
 
@@ -38,8 +37,6 @@ app.get("/prodotti/:id", (req: Request, res: Response) => {
     } else {
         res.status(404).render("404", { title: `Prodotto con id ${idNumber} non trovato.` });
     }
-
-    res.render("index", { title: "My Ecommerce", prodotti: data });
 });
 
 app.get("/api/prodotti", (req: Request, res: Response) => {
